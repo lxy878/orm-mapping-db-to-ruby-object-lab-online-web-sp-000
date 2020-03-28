@@ -35,7 +35,7 @@ class Student
     SQL
 
     students_in_grade_10 = DB[:conn].execute(sql, 10)
-    students_in_grade_10.collect {|student| self.new_from_db(student)}
+    students_in_grade_10.collect {|student| self.new_from_db(student)}.first
 
   end
 
