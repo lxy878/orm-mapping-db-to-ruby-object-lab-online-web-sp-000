@@ -34,8 +34,8 @@ class Student
       SELECT * FROM students WHERE grade = ? LIMIT ?
     SQL
 
-    students_in_grade_9 = DB[:conn].execute(sql, 10, x)
-    students_in_grade_9.collect {|student| self.new_from_db(student)}.first
+    students_in_grade_10 = DB[:conn].execute(sql, 10, x)
+    students_in_grade_10.collect {|student| self.new_from_db(student)}
 
   end
 
