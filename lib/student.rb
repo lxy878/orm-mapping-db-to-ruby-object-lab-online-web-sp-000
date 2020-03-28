@@ -29,12 +29,12 @@ class Student
 
   end
 
-  def self.first_X_students_in_grade_10
+  def self.first_X_students_in_grade_10(x)
     sql = <<-SQL
-      SELECT * FROM students WHERE grade = ?
+      SELECT * FROM students WHERE grade = ? LIMIT ?
     SQL
 
-    students_in_grade_9 = DB[:conn].execute(sql, 10)
+    students_in_grade_9 = DB[:conn].execute(sql, 10, x)
     students_in_grade_9.collect {|student| self.new_from_db(student)}.first
 
   end
