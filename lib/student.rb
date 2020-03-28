@@ -16,6 +16,7 @@ class Student
     SQL
 
     students_in_grade_9 = DB[:conn].execute(sql)
+    students_in_grade_9.collect {|student| self.new_from_db(student)}
 
   end
 
