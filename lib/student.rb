@@ -10,6 +10,15 @@ class Student
     new_student
   end
 
+  def self.students_below_12th_grade
+    sql = <<-SQL
+      SELECT * FROM students WHERE grade < ?
+    SQL
+
+    students_in_grade_9 = DB[:conn].execute(sql, 12)
+    students_in_grade_9.collect {|student| self.new_from_db(student)}
+
+  end
   def self.all_students_in_grade_9
     sql = <<-SQL
       SELECT * FROM students WHERE grade = ?
