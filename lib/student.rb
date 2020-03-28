@@ -34,7 +34,7 @@ class Student
       SELECT * FROM students WHERE grade = ?
     SQL
 
-    students_in_grade_10 = DB[:conn].execute(sql, 9)
+    students_in_grade_10 = DB[:conn].execute(sql, 10)
     students_in_grade_10.collect {|student| self.new_from_db(student)}
 
   end
