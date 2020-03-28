@@ -36,7 +36,7 @@ class Student
       SELECT * FROM students
     SQL
     student_array = DB[:conn].execute(sql)
-    studnet_array.collect do |student|
+    student_array.collect do |student|
       self.new_from_db(student)
     end
   end
