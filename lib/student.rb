@@ -29,6 +29,16 @@ class Student
 
   end
 
+  def self.first_X_students_in_grade_10
+    sql = <<-SQL
+      SELECT * FROM students WHERE grade = ?
+    SQL
+
+    students_in_grade_9 = DB[:conn].execute(sql, 10)
+    students_in_grade_9.collect {|student| self.new_from_db(student)}.first
+
+  end
+
   def self.all
     # retrieve all the rows from the "Students" database
     # remember each row should be a new instance of the Student class
